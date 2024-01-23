@@ -63,6 +63,7 @@ jobs:
 
             
   build_deploy:
+    needs: dockerBuildPush
     uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@main
     with:
       environment: dev
