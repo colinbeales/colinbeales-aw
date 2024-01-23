@@ -62,7 +62,7 @@ jobs:
       run: docker push $registryName/$repositoryName:$tag
 
             
-  build_deploy:
+  deploy_dev:
     needs: dockerBuildPush
     uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@main
     with:
@@ -70,3 +70,22 @@ jobs:
       webappUrl: https://colinbeales-aw-dev.azurewebsites.net/
       registryName: ${{ vars.REGISTRY_NAME }}
       repositoryName: ${{ vars.REPOSITORY_NAME }}
+
+  deploy_test:
+    needs: dockerBuildPush
+    uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@main
+    with:
+      environment: test
+      webappUrl: https://colinbeales-aw-test.azurewebsites.net/
+      registryName: ${{ vars.REGISTRY_NAME }}
+      repositoryName: ${{ vars.REPOSITORY_NAME }}
+
+  deploy_prod:
+    needs: dockerBuildPush
+    uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@main
+    with:
+      environment: prod
+      webappUrl: https://colinbeales-aw-prod.azurewebsites.net/
+      registryName: ${{ vars.REGISTRY_NAME }}
+      repositoryName: ${{ vars.REPOSITORY_NAME }}
+    
