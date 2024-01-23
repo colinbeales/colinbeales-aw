@@ -51,7 +51,7 @@ jobs:
         # Server address of Docker registry. If not set then will default to Docker Hub
         registry: ${{ env.registryName }}
         # Username used to log against the Docker registry
-        username: ${{ secrets.ACR_USERNAME }}
+        username: ${{ var.ACR_USERNAME }}
         # Password or personal access token used to log against the Docker registry
         password: ${{ secrets.ACR_PASSWORD }}
         # Log out from the Docker registry at the end of a job
