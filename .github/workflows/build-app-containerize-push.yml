@@ -2,7 +2,7 @@ name: .NET CI and Containerize and Push
 
 env:
   registryName: colinbealesawreg.azurecr.io
-  repositoryName: wth/dotnetcoreapp
+  repositoryName: aw/dotnetcoreapp
   dockerFolderPath: ./Application/src/RazorPagesTestSample
   tag: ${{github.run_number}}
   
@@ -51,7 +51,7 @@ jobs:
         # Server address of Docker registry. If not set then will default to Docker Hub
         registry: ${{ env.registryName }}
         # Username used to log against the Docker registry
-        username: ${{ secrets.ACR_USERNAME }}
+        username: ${{ vars.ACR_USERNAME }}
         # Password or personal access token used to log against the Docker registry
         password: ${{ secrets.ACR_PASSWORD }}
         # Log out from the Docker registry at the end of a job
