@@ -1,0 +1,33 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      webappUrl:
+        required: true
+        type: string
+      registryName:
+        required: true
+        type: string
+      repositoryName:
+        required: true
+        type: string
+
+jobs:
+  deploy-environment:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ inputs.webappUrl }}
+  
+    steps:
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: colinbeales-aw-${{inputs.environment}} 
+        images: ${{inputs.registryName}}/${{inputs.repositoryName}}:${{github.run_number}}
