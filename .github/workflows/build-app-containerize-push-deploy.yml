@@ -2,7 +2,7 @@ name: .NET CI and Containerize and Push and CD
 
 env:
   registryName: colinbealesawreg.azurecr.io
-  repositoryName: wth/dotnetcoreapp
+  repositoryName: aw/dotnetcoreapp
   dockerFolderPath: ./Application/src/RazorPagesTestSample
   tag: ${{github.run_number}}
   
