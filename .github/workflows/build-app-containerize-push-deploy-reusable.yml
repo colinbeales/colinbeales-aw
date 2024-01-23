@@ -72,6 +72,7 @@ jobs:
       webappUrl: https://colinbeales-aw-dev.azurewebsites.net/
       registryName: ${{ vars.REGISTRY_NAME }}
       repositoryName: ${{ vars.REPOSITORY_NAME }}
+    secrets: inherit
 
   deploy_test:
     needs: dockerBuildPush
@@ -81,6 +82,7 @@ jobs:
       webappUrl: https://colinbeales-aw-test.azurewebsites.net/
       registryName: ${{ vars.REGISTRY_NAME }}
       repositoryName: ${{ vars.REPOSITORY_NAME }}
+    secrets: inherit
 
   deploy_prod:
     needs: dockerBuildPush
@@ -90,4 +92,5 @@ jobs:
       webappUrl: https://colinbeales-aw-prod.azurewebsites.net/
       registryName: ${{ vars.REGISTRY_NAME }}
       repositoryName: ${{ vars.REPOSITORY_NAME }}
+    secrets: inherit
     
