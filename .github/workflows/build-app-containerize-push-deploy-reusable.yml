@@ -65,7 +65,7 @@ jobs:
 
             
   build_deploy:
-    uses: owner/repo/.github/workflows/deploy-reusable.yml@master
+    uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@master
     with:
       environment: dev
       webappUrl: https://colinbeales-aw-dev.azurewebsites.net/
