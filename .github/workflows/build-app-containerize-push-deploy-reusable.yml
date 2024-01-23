@@ -3,6 +3,8 @@ name: .NET CI and Containerize and Push and CD - Reusable
 env:
   dockerFolderPath: ./Application/src/RazorPagesTestSample
   tag: ${{github.run_number}}
+  registryName: ${{ vars.REGISTRY_NAME }}
+  repositoryName: ${{ vars.REPOSITORY_NAME }}
   
 on:
   push:
