@@ -64,7 +64,7 @@ jobs:
       run: docker push $registryName/$repositoryName:$tag
 
             
-  deploy_dev:
+  deployDev:
     needs: dockerBuildPush
     uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@main
     with:
@@ -74,8 +74,8 @@ jobs:
       repositoryName: ${{ vars.REPOSITORY_NAME }}
     secrets: inherit
 
-  deploy_test:
-    needs: dockerBuildPush
+  deployTest:
+    needs: deployDev
     uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@main
     with:
       environment: test
@@ -84,8 +84,8 @@ jobs:
       repositoryName: ${{ vars.REPOSITORY_NAME }}
     secrets: inherit
 
-  deploy_prod:
-    needs: dockerBuildPush
+  deployProd:
+    needs: deployTest
     uses: colinbeales/colinbeales-aw/.github/workflows/deploy-reusable.yml@main
     with:
       environment: prod
